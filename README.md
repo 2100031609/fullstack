@@ -1,17 +1,8 @@
-# Course information
+# Express application
 
-Simple web applicaton for understanding the core concepts of TypeScript with React
+Install dependencies with `npm install`
+Run with `npm start`
+Or in development mode with `npm run dev`
+# MongoDB
 
-## Start the application
-
-To start an application, do the following :
-
-```bash
-# Install dependancies
-$ yarn install
-
-# Start the application
-$ yarn start
-```
-
-You can then access the app on : [http://localhost:3000/](http://localhost:3000/)
+The application has /todos crud which requires a MongoDB. Pass connection url with env `MONGO_URL`
