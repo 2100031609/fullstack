@@ -1,42 +1,51 @@
-# Patientor Backend
+# First steps with typescript
 
-For this set of exercises we will be developing a backend for an existing project called Patientor which is a simple medical record application for doctors who handle diagnoses and basic health information of their patients.
+Simple express applicaton for understanding the core concepts of TypeScript
 
-The [frontend](https://github.com/fullstack-hy2020/patientor) has already been built by outsider experts and our task is to create a backend to support the existing code.
+## Start the application
 
-## Start the application locally
-
-To start an application:
+To start an application, do the following :
 
 ```bash
-# Install dependancies
-$ npm install
-
-# Start the application in dev environment
-$ npm run dev
-
-# Start the application in prod environment
-$ npm run tsc  # Create a production build
-$ npm start
-
-# To start the frontend patientor app
-# Open a new terminal and head to the patientor-frontend directory
-$ cd ../patientor-frontend
-$ npm install
+# npm dependancies
+$ yarn install
+# Start the application
 $ npm start
 ```
 
-Then the two following endpoints are accessible:
-* http://localhost:3001/api/patients (POST)
-* http://localhost:3001/api/diagnoses (GET)
+You can then access the app on : [http://localhost:3003/](http://localhost:3003/)
 
-To create a now patient (POST), the payload should look like this:
+# Endpoints
+
+The following enpoinds are available:
+* `/bmi`: For calculating `the body mass index` based on given weight (in kilograms) and height (in centimeters). For example to get bmi for a person having height 180 and weight 72, the url is http://localhost:3003/bmi?height=180&weight=72. The response is a json of the form:
+
 ```json
 {
-    "name": "John McClane",
-    "dateOfBirth": "1986-07-09",
-    "ssn": "090786-122X",
-    "gender": "male",
-    "occupation": "New york city cop"
+  "weight": 72,
+  "height": 180,
+  "bmi": "Normal (healthy weight)"
+}
+```
+
+* `/exercises`: That calculates the average time of daily exercise hours and compares it to the target amount of daily hours. It can be used by doing a HTTP POST request to `/exercises` exercises with the input in the request body:
+
+```json
+{
+  "daily_exercises": [1, 0, 2, 0, 3, 0, 2.5],
+  "target": 2.5
+}
+```
+
+The response is a json of the form:
+```json
+{
+    "periodLength": 7,
+    "trainingDays": 4,
+    "success": false,
+    "rating": 1,
+    "ratingDescription": "bad",
+    "target": 2.5,
+    "average": 1.2142857142857142
 }
 ```
